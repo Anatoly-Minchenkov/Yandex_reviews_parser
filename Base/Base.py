@@ -10,14 +10,12 @@ from selenium.webdriver.common.by import By
 class Base_class:
     '''Базовый класс, который содержит многократно-используемые функции
            -link - принимает ссылку на страницу с отзывами на яндекс.картах
-           -comment - Принимает комментарий, который нужно найти
-           -headless - Принимает True/False. Определяет, нужно ли отображать браузер
-           -screenshots - Принимает True/False.  Определяет, нужно ли делать скриншоты спаршенных комментариев
+           -headless - Принимает True/False. Определяет, нужно ли запускать браузер в фоновом режиме
+           -screenshots - Принимает True/False.  Определяет, нужно ли делать скриншоты спаршенных отзывов
     '''
 
     def __init__(self, link, headless=True, screenshots=False):
         self.link = link
-        # self.comment = comment
         self.headless = headless
         self.screenshots = screenshots
         self.set_review = set()
@@ -29,8 +27,8 @@ class Base_class:
         self.review_count, self.location_name = self.get_variables()
 
         if self.screenshots:
-            if not os.path.isdir(f'screen/{self.location_name}'):
-                os.mkdir(f'screen/{self.location_name}')
+            if not os.path.isdir(f'screens/{self.location_name}'):
+                os.mkdir(f'screens/{self.location_name}')
 
     def __del__(self):
         '''функция-финализатор'''
@@ -49,12 +47,12 @@ class Base_class:
     def make_screenshot(self, review):
         '''Функия создания скриншота'''
         name = str(self.reviews_count) + '_' + review.find_element(By.CSS_SELECTOR, '.business-review-view__author span').text.strip(':?<>|*\\/.')
-        filename = f"screen/{self.location_name}/{name}.png"
+        filename = f"screens/{self.location_name}/{name}.png"
         review.screenshot(f"{filename}")
         print(f'Скриншот {name}.png сделан')
 
     def load_new_50_reviews_on_page(self):
-        '''Функия подргузки комментариев (Yandex подгружает по 50 комментариев за раз)'''
+        '''Функия подргузки отзывов (Yandex подгружает по 50 отзывов за раз)'''
         actual_len = len(self.set_review)
         div = self.browser.find_element(By.CSS_SELECTOR, 'div.card-reviews-view')
         ActionChains(self.browser).click(div).send_keys(Keys.END).send_keys(Keys.PAGE_UP).perform()
