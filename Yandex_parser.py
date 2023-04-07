@@ -100,8 +100,8 @@ class Search_comment_in_reviews(Base_class):
 
 
 link = 'https://yandex.com/maps/org/triumfalna_arka_holovnoho_shtabu/170068743929/reviews/?display-text=%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%87%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C&ll=30.318384%2C59.937857&mode=search&sctx=ZAAAAAgBEAAaKAoSCQpMp3UbVD5AEZt1xvfF901AEhIJMnGrIAa6wj8RNpNvtrkxpT8iBgABAgMEBSgKOABA5a4HSAFqAnVhnQHNzEw9oAEAqAEAvQFjOhZEwgGRAdLpzrjWBf2D%2FMPWAtDF9OTfAubXxIq2A%2BC68KPOA5yTzv6ZA46W3%2FGUBOyp39DvAvmTlr0dn9zmlqIG0av2npIE2JWu%2BAOYn%2F2OUr2S9PEDuqi1guwE0dWP8%2BsDpIGfgAXdzNGVjQb5rYzH%2BQSn7bmLtgPMz5ey%2BQSv4cnGnQLYlL%2FhtQP43YeVlQSal5m7%2BQTqAQDyAQD4AQCCAh0oKGNhdGVnb3J5X2lkOig4OTY4MzM2ODUwOCkpKYoCCzg5NjgzMzY4NTA4kgIAmgIMZGVza3RvcC1tYXBz&sll=30.318384%2C59.937857&sspn=0.009611%2C0.004728&tab=reviews&text=%7B%22text%22%3A%22%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%87%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C%22%2C%22what%22%3A%5B%7B%22attr_name%22%3A%22category_id%22%2C%22attr_values%22%3A%5B%2289683368508%22%5D%7D%5D%7D&z=16.33'
-Yandex_reviews_parser(link, headless=True, screenshots=False)
+# Yandex_reviews_parser(link, headless=True, screenshots=False)
 
 ### Поиск переданного комментария, и создание его скриншота ###
-# comment = '''Сердце спб, красота и величие.'''
-# Search_comment_in_reviews(link, comment, headless=True, screenshots=True)
+comment = '''Сердце спб, красота и величие.'''
+Search_comment_in_reviews(link, comment, headless=True, screenshots=True)
